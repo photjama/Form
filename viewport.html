@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>คำร้องขอโอนย้ายสาขาวิชาต่างคณะ MJU</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --mju-green:#1b5e20;
+    --accent:#2e7d32;
+    --muted:#707070;
+    --bg:#f4f7f6;
+    --card:#ffffff;
+    --error:#d8000c;
+    --radius:10px;
+  }
+  *{box-sizing:border-box}
+  body{
+    font-family:'Sarabun',sans-serif;
+    background:var(--bg);
+    margin:0;
+    padding:24px;
+    color:#111;
+  }
+
+  .wrap{
+    max-width:1100px;
+    margin:0 auto;
+    background:var(--card);
+    border-radius:var(--radius);
+    box-shadow:0 6px 26px rgba(0,0,0,0.08);
+    overflow:hidden;
+  }
+
+  header.top{
+    display:flex;
+    align-items:center;
+    padding:18px 32px;
+    border-bottom:4px solid #111;
+    background:linear-gradient(90deg, rgba(27,94,32,0.04), transparent);
+  }
+  header.top img{height:64px}
+  .form-code{margin-left:auto; font-weight:700; font-size:18px}
+
+  main{
+    padding:22px 28px;
+  }
+
+  h1{
+    font-size:20px;
+    text-align:center;
+    margin:4px 0 2px;
+    color:var(--mju-green);
+    font-weight:700;
+  }
+  .subtitle{text-align:center;color:var(--muted); margin-bottom:18px}
+
+  form{display:flex; flex-direction:column; gap:18px}
+
+  .grid{
+    display:grid;
+    gap:12px;
+  }
+  /* responsive column helpers */
+  .cols-2{grid-template-columns:1fr 1fr;}
+  .cols-3{grid-template-columns:1fr 1fr 1fr;}
+  .cols-4{grid-template-columns:repeat(4,1fr);}
+
+  label{display:block; font-weight:600; margin-bottom:6px;}
+  input[type="text"], input[type="date"], input[type="tel"], textarea, select{
+    width:100%;
+    padding:9px 10px;
+    border:1px solid #cfcfcf;
+    border-radius:8px;
+    font-size:15px;
+    background:#fff;
+  }
+  textarea{min-height:86px; resize:vertical}
+  input:focus, textarea:focus, select:focus{
+    outline:none;
+    border-color:var(--accent);
+    box-shadow:0 0 0 4px rgba(46,125,50,0.08);
+  }
+
+  .row-inline{display:flex; gap:12px; align-items:center; flex-wrap:wrap;}
+  .radio-inline, .checkbox-inline{display:flex; gap:12px; align-items:center; flex-wrap:wrap}
+  .small{font-size:13px; color:var(--muted)}
+
+  .card{
+    background:linear-gradient(180deg, rgba(246,249,246,1), #fff);
+    border:1px solid #e7e7e7;
+    padding:14px;
+    border-radius:10px;
+  }
+
+  .section-title{
+    display:flex; align-items:center; gap:12px;
+    margin-bottom:8px; font-weight:700; color:var(--mju-green);
+  }
+
+  .actions{display:flex; gap:12px; align-items:center; justify-content:center; margin-top:6px}
+  button.primary{
+    background:var(--mju-green);
+    color:#fff;
+    border:none;
+    padding:11px 18px;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+  }
+  button.ghost{
+    background:transparent;
+    border:1px solid #ccc;
+    padding:10px 14px;
+    border-radius:8px;
+    cursor:pointer;
+  }
+
+  .error{color:var(--error); font-size:13px; margin-top:6px}
+  .field-invalid input, .field-invalid textarea, .field-invalid select{border-color:var(--error); box-shadow:0 0 0 3px rgba(216,40,40,0.06)}
+
+  footer.note{padding:12px 24px; text-align:center; color:var(--muted); background:#fbfdfb; font-size:13px; border-top:1px solid #eee}
+
+ 
+  .comments-grid{display:grid; gap:12px; grid-template-columns:repeat(2,1fr)}
+  @media (max-width:900px){
+    .cols-2, .cols-3, .cols-4{grid-template-columns:1fr}
+    .comments-grid{grid-template-columns:1fr}
+    header.top{flex-direction:row}
+  }
+
+ 
+  .muted{color:var(--muted); font-size:13px}
+</style>
+</head>
+<body>
+
+<div class="wrap" role="application" aria-label="ฟอร์มคำร้องโอนย้ายสาขาวิชา">
+  <header class="top">
+    <img src="https://upload.wikimedia.org/wikipedia/th/thumb/b/b7/MJU_LOGO.svg/1200px-MJU_LOGO.svg.png" alt="MJU Logo">
+    <div class="form-code">มคอ 16</div>
+  </header>
+
+  <main>
+    <h1>คำร้องขอโอนย้ายสาขาวิชาต่างคณะ</h1>
+    <div class="subtitle">สำหรับหลักสูตร 4 ปี และหลักสูตร 4 ปีเทียบเข้าเรียน (2 ปี)</div>
+
+    <form id="transferForm" novalidate>
+
+      <!-- header fields -->
+      <div class="card">
+        <div class="grid cols-1">
+          <div>
+  <span style="font-weight: 700;">เขียนที่ : </span><span class="muted">มหาวิทยาลัยแม่โจ้</span>
+</div>
+            <label for="requestDate">วันที่เขียนคำร้อง</label>
+            <div style="text-align:left; max-width: 300px;">
+            <input id="requestDate" name="requestDate" type="date" style="width: 150px;" />
+            <div id="requestDateError" class="error" aria-live="polite"></div>
+            </div>
+          <div>
+            <label>เรื่อง</label>
+            <div class="muted">ขอโอนย้ายสาขาวิชาต่างคณะ</div>
+          </div>
+          <div>
+            <label>เรียน</label>
+            <div class="muted">คณบดีคณะ (คณะใหม่)</div>
+          </div>
+        </div>
+
+        <p class="small" style="margin-top:12px;"><strong>สิ่งที่ส่งมาด้วย:</strong> ใบรายงานผลการศึกษา</p>
+      </div>
+
+      <!-- personal -->
+      <div class="card">
+        <div class="section-title">ข้อมูลผู้ยื่นคำร้อง</div>
+
+        <label>คำนำหน้า</label>
+        <div class="radio-inline" role="radiogroup" aria-labelledby="prefixLabel">
+          <label><input type="radio" name="prefix" value="นาย"> นาย</label>
+          <label><input type="radio" name="prefix" value="นาง"> นาง</label>
+          <label><input type="radio" name="prefix" value="นางสาว"> นางสาว</label>
+        </div>
+        <div id="prefixError" class="error"></div>
+
+        <div class="grid cols-2" style="margin-top:8px;">
+          <div id="fullnameField">
+            <label for="fullname">ชื่อ-นามสกุล</label>
+            <input id="fullname" name="fullname" type="text" maxlength="100" placeholder="เช่น สมชาย ใจดี">
+            <div id="fullnameError" class="error"></div>
+          </div>
+
+          <div class="grid cols-2" style="gap:8px">
+            <div id="studentIdField">
+              <label for="studentId">รหัสนักศึกษา</label>
+              <input id="studentId" name="studentId" type="text" maxlength="10" placeholder="รหัสนักศึกษา">
+              <div id="studentIdError" class="error"></div>
+            </div>
+
+            <div id="phoneField">
+              <label for="phone">โทรศัพท์มือถือ</label>
+              <input id="phone" name="phone" type="tel" placeholder="0812345678" maxlength="10">
+              <div id="phoneError" class="error"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid cols-3" style="margin-top:8px;">
+          <div id="systemField">
+            <label for="system">ระบบ</label>
+            <input id="system" name="system" type="text" maxlength="5" placeholder="เช่น ปกติ">
+            <div id="systemError" class="error"></div>
+          </div>
+
+          <div>
+            <label>หลักสูตร</label>
+            <div class="checkbox-inline">
+              <label><input type="checkbox" name="course" value="4-5 ปี"> 4-5 ปี</label>
+              <label><input type="checkbox" name="course" value="4 ปี เทียบเข้าเรียน (2ปี)"> 4 ปี เทียบเข้าเรียน (2ปี)</label>
+            </div>
+            <div id="courseError" class="error"></div>
+          </div>
+
+          <div>
+            <label>ภาค</label>
+            <div class="checkbox-inline">
+              <label><input type="checkbox" name="semester" value="ปกติ"> ปกติ</label>
+              <label><input type="checkbox" name="semester" value="สมทบ"> สมทบ</label>
+            </div>
+            <div id="semesterError" class="error"></div>
+          </div>
+        </div>
+
+        <div class="grid cols-2" style="margin-top:12px;">
+          <div id="majorFromField">
+            <label for="majorFrom">สาขาวิชา (เดิม)</label>
+            <input id="majorFrom" name="majorFrom" type="text">
+            <div id="majorFromError" class="error"></div>
+          </div>
+          <div id="facultyFromField">
+            <label for="facultyFrom">คณะ (เดิม)</label>
+            <input id="facultyFrom" name="facultyFrom" type="text">
+            <div id="facultyFromError" class="error"></div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;">
+          <label for="majorTo">มีความประสงค์จะขอโอนย้ายไปสาขาวิชา</label>
+          <input id="majorTo" name="majorTo" type="text">
+          <div id="majorToError" class="error"></div>
+        </div>
+
+        <div style="margin-top:12px;">
+          <label for="reason">เนื่องจาก</label>
+          <textarea id="reason" name="reason"></textarea>
+          <div id="reasonError" class="error"></div>
+        </div>
+      </div>
+
+      <!-- qualification -->
+      <div class="card">
+        <div class="section-title">คุณสมบัติตามหลักสูตร</div>
+        <p>ทั้งนี้ ข้าพเจ้ามีคุณสมบัติครบถ้วนในการขอย้ายสาขาวิชา ดังนี้ คือ</p>
+
+        <div style="margin-top:6px">
+          <strong>หลักสูตร 4 ปี เทียบเข้าเรียน (2ปี)</strong>
+          <ul>
+            <li>ได้ศึกษาตามแผนการศึกษาในสาขาวิชาเดิมมาแล้วไม่น้อยกว่า 1 ภาคการศึกษาปกติ</li>
+            <li>มีหน่วยกิตสะสมไม่น้อยกว่า 18 หน่วยกิต และมีแต้มระดับคะแนนเฉลี่ยสะสมไม่น้อยกว่า 2.00</li>
+          </ul>
+
+          <strong>หลักสูตร 4 ปี</strong>
+          <ul>
+            <li>ได้ศึกษาตามแผนการศึกษาในสาขาวิชาเดิมมาแล้วไม่น้อยกว่า 2 ภาคการศึกษาปกติ</li>
+            <li>มีหน่วยกิตสะสมไม่น้อยกว่า 30 หน่วยกิต และมีแต้มระดับคะแนนเฉลี่ยสะสมไม่น้อยกว่า 2.00</li>
+          </ul>
+
+          <div style="margin-top:8px">
+            <label for="deadlineDate">และยื่นคำร้องโอนย้ายสาขาวิชาภายในคณะก่อนวันที่</label>
+            <input id="deadlineDate" name="deadlineDate" type="date">
+            <div id="deadlineDateError" class="error"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- signature -->
+      <div class="card" style="text-align:center">
+        <div style="margin-bottom:8px">จึงเรียนมาเพื่อโปรดพิจารณาอนุมัติ</div>
+        <div style="margin:8px 0 4px"><strong>ขอแสดงความนับถือ</strong></div>
+        <div style="margin-bottom:8px">
+      
+          <input id="studentSignature" name="studentSignature" type="text" style="max-width:360px; margin:0 auto; display:block">
+          <div id="studentSignatureError" class="error"></div>
+          <label for="studentSignature" class="small">นักศึกษา</label>
+        </div>
+      </div>
+
+      <!-- comments grid -->
+      <div class="card">
+        <div class="section-title">ความเห็นฝ่าย/คณะ/สำนัก</div>
+        <div class="comments-grid">
+
+          <div>
+            <label class="small"><strong>ความเห็นอาจารย์ที่ปรึกษา (สาขาวิชาเดิม)</strong></label>
+            <textarea id="advisorComment" name="advisorComment"></textarea>
+            <div id="advisorCommentError" class="error"></div>
+            <label class="small" style="margin-top:8px">(อาจารย์ที่ปรึกษา)</label>
+            <input id="advisorName" name="advisorName" type="text" placeholder="ชื่ออาจารย์ที่ปรึกษา">
+            <div id="advisorNameError" class="error"></div>
+            <label class="small">วันที่ <input id="advisorDate" name="advisorDate" type="date"></label>
+            <div id="advisorDateError" class="error"></div>
+          </div>
+
+          <div>
+            <label class="small"><strong>ความเห็นประธานกรรมการบริหารหลักสูตร (สาขาวิชาที่จะโอนย้าย)</strong></label>
+            <textarea id="courseChairComment" name="courseChairComment"></textarea>
+            <div id="courseChairCommentError" class="error"></div>
+            <input id="courseChairName" name="courseChairName" type="text" placeholder="ชื่อประธานกรรมการบริหารหลักสูตร">
+            <div id="courseChairNameError" class="error"></div>
+            <label class="small">วันที่ <input id="courseChairDate" name="courseChairDate" type="date"></label>
+            <div id="courseChairDateError" class="error"></div>
+          </div>
+
+          <div>
+            <label class="small"><strong>ความเห็นคณบดีคณะ (สาขาวิชาเดิม)</strong></label>
+            <textarea id="deanFromComment" name="deanFromComment"></textarea>
+            <div id="deanFromCommentError" class="error"></div>
+            <div class="checkbox-inline" style="margin:10px 0">
+              <label><input type="checkbox" name="deanFromApprove" value="เห็นชอบ"> เห็นชอบ</label>
+              <label><input type="checkbox" name="deanFromApprove" value="ไม่เห็นชอบ"> ไม่เห็นชอบ</label>
+            </div>
+            <input id="deanFromName" name="deanFromName" type="text" placeholder="ชื่อคณบดีคณะ">
+            <div id="deanFromNameError" class="error"></div>
+            <label class="small">วันที่ <input id="deanFromDate" name="deanFromDate" type="date"></label>
+            <div id="deanFromDateError" class="error"></div>
+          </div>
+
+
+          <div>
+            <label class="small"><strong>ความเห็นประธานกรรมการบริหารหลักสูตร (สาขาวิชาเดิม)</strong></label>
+            <textarea id="courseChairToComment" name="courseChairToComment"></textarea>
+            <div id="courseChairToCommentError" class="error"></div>
+            <input id="courseChairToName" name="courseChairToName" type="text" placeholder="ชื่อประธานกรรมการ (ปลายทาง)">
+            <div id="courseChairToNameError" class="error"></div>
+            <label class="small">วันที่ <input id="courseChairToDate" name="courseChairToDate" type="date"></label>
+            <div id="courseChairToDateError" class="error"></div>
+          </div>
+
+          <div>
+            <label class="small"><strong>ความเห็นคณบดีคณะ (สาขาวิชาที่จะโอนย้าย)</strong></label>
+            <textarea id="deanToComment" name="deanToComment"></textarea>
+            <div id="deanToCommentError" class="error"></div>
+            <div class="checkbox-inline" style="margin:10px 0">
+              <label><input type="checkbox" name="deanToApprove" value="อนุมัติ"> อนุมัติ</label>
+              <label><input type="checkbox" name="deanToApprove" value="ไม่อนุมัติ"> ไม่อนุมัติ</label>
+            </div>
+            <input id="deanToName" name="deanToName" type="text" placeholder="ชื่อคณบดี (ปลายทาง)">
+            <div id="deanToNameError" class="error"></div>
+            <label class="small">วันที่ <input id="deanToDate" name="deanToDate" type="date"></label>
+            <div id="deanToDateError" class="error"></div>
+          </div>
+
+        </div> <!-- comments-grid -->
+      </div>
+
+      <!-- finance & admin -->
+      <div class="card">
+        <div class="section-title">งานเงินรายได้ กองคลัง ชั้น 1 สำนักงานอธิการบดี</div>
+        <p class="small">ได้รับชำระเงินจำนวน <strong>500 บาท</strong> เป็นที่เรียบร้อยแล้ว</p>
+
+        <div class="grid cols-2">
+          <div id="receiptBookField">
+            <label for="receiptBook">เล่มที่ใบเสร็จรับเงิน</label>
+            <input id="receiptBook" name="receiptBook" type="text">
+            <div id="receiptBookError" class="error"></div>
+          </div>
+          <div id="receiptNoField">
+            <label for="receiptNo">เลขที่ใบเสร็จรับเงิน</label>
+            <input id="receiptNo" name="receiptNo" type="text">
+            <div id="receiptNoError" class="error"></div>
+          </div>
+        </div>
+
+        <div style="margin-top:10px">
+          <label for="accountantName">ชื่อผู้รับเงิน (นักวิชาการเงินและบัญชี / ผู้รับเงิน)</label>
+          <input id="accountantName" name="accountantName" type="text">
+          <div id="accountantNameError" class="error"></div>
+        </div>
+
+        <div style="margin-top:8px">
+          <label for="paymentDate">วันที่</label>
+          <input id="paymentDate" name="paymentDate" type="date">
+          <div id="paymentDateError" class="error"></div>
+        </div>
+      </div>
+
+      <!-- director & registrar -->
+      <div class="card">
+        <div class="grid cols-2">
+          <div>
+            <label class="small"><strong>ความเห็นผู้อำนวยการสำนักบริหารและพัฒนาวิชาการ</strong></label>
+            <textarea id="directorComment" name="directorComment"></textarea>
+            <div id="directorCommentError" class="error"></div>
+            <input id="directorName" name="directorName" type="text" placeholder="ชื่อผู้อำนวยการ">
+            <div id="directorNameError" class="error"></div>
+            <label class="small">วันที่ <input id="directorDate" name="directorDate" type="date"></label>
+            <div id="directorDateError" class="error"></div>
+          </div>
+
+          <div>
+            <label class="small"><strong>ความเห็นหัวหน้ากลุ่มภารกิจทะเบียนเรียนฯ</strong></label>
+            <textarea id="registrarHeadComment" name="registrarHeadComment"></textarea>
+            <div id="registrarHeadCommentError" class="error"></div>
+            <input id="registrarHeadName" name="registrarHeadName" type="text" placeholder="ชื่อหัวหน้ากลุ่มภารกิจ">
+            <div id="registrarHeadNameError" class="error"></div>
+            <label class="small">วันที่ <input id="registrarHeadDate" name="registrarHeadDate" type="date"></label>
+            <div id="registrarHeadDateError" class="error"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- final admin -->
+      <div class="card">
+        <div class="section-title">สำหรับเจ้าหน้าที่ที่ดำเนินการ</div>
+        <p class="small">ดำเนินการย้ายสาขาวิชาเรียบร้อยแล้ว</p>
+
+        <div class="grid cols-3">
+          <div id="newStudentIdField">
+            <label for="newStudentId">รหัสนักศึกษาใหม่</label>
+            <input id="newStudentId" name="newStudentId" type="text">
+            <div id="newStudentIdError" class="error"></div>
+          </div>
+
+          <div id="officerNameField">
+            <label for="officerName">ชื่อเจ้าหน้าที่การศึกษา</label>
+            <input id="officerName" name="officerName" type="text">
+            <div id="officerNameError" class="error"></div>
+          </div>
+
+          <div id="officerDateField">
+            <label for="officerDate">วันที่</label>
+            <input id="officerDate" name="officerDate" type="date">
+            <div id="officerDateError" class="error"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- notes -->
+      <div class="card">
+        <div class="section-title">หมายเหตุ</div>
+        <ul>
+          <li>การโอนย้ายสาขาวิชาในคณะ และต่างคณะ จะกระทำได้เพียงครั้งเดียว</li>
+          <li>การยื่นคำร้องขอโอนย้ายสาขาวิชาที่ได้อนุมัติแล้ว จะต้องยื่นที่กลุ่มภารกิจทะเบียนเรียนประมวลผล และรับเข้า สำนักบริหารและพัฒนาวิชาการ ก่อนเริ่มเปิดภาคเรียนปกติที่ขอโอนย้ายไม่น้อยกว่า 4 สัปดาห์</li>
+          <li>นักศึกษาที่ขอโอนย้ายสาขาวิชาต่างคณะ จะต้องมีระยะเวลาศึกษาอยู่ในสาขาวิชาที่โอนย้ายเข้า ก่อนจบการศึกษาและมีสิทธิ์ขอรับปริญญา ดังนี้
+            <ul>
+              <li>หลักสูตร 4 ปี เทียบเข้าเรียน (2 ปี) จะต้องมีระยะเวลาศึกษาอยู่ในสาขาวิชาที่โอนย้ายเข้า ไม่น้อยกว่า 2 ภาคการศึกษาปกติ</li>
+              <li>หลักสูตร 4 ปี จะต้องมีระยะเวลาศึกษาอยู่ในสาขาวิชาที่โอนย้ายเข้า ไม่น้อยกว่า 4 ภาคการศึกษาปกติ</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="ghost" id="resetBtn">ล้างข้อมูล</button>
+        <button type="submit" class="primary">ส่งคำร้องขอโอนย้าย</button>
+      </div>
+      <div class="text-center mt-4">
+ <a href="index.html" style="text-decoration: none;" class="text-green-700 hover:text-green-900 font-medium transition">
+  ← กลับไปหน้าแรก
+</a>
+</div>
+    </form>
+  </main>
+
+  <footer class="note">แบบฟอร์มคำร้องขอโอนย้ายสาขาวิชาต่างคณะ MJU</footer>
+</div>
+
+<script>
+(function(){
+  const form = document.getElementById('transferForm');
+
+  const requiredList = [
+    'fullname','studentId','phone','system',
+    'majorFrom','facultyFrom','majorTo','reason','deadlineDate',
+    'studentSignature',
+   
+    'advisorComment','advisorName','advisorDate',
+    
+    'courseChairComment','courseChairName','courseChairDate',
+   
+    'deanFromComment','deanFromName','deanFromDate',
+    
+    'courseChairToComment','courseChairToName','courseChairToDate',
+    
+    'deanToComment','deanToName','deanToDate',
+    
+    'receiptBook','receiptNo','accountantName','paymentDate',
+    
+    'directorComment','directorName','directorDate',
+    'registrarHeadComment','registrarHeadName','registrarHeadDate',
+    
+    'newStudentId','officerName','officerDate'
+  ];
+
+  
+  function showErr(id, msg){
+    const el = document.getElementById(id);
+    const err = document.getElementById(id+'Error');
+    if(err) err.textContent = msg;
+    if(el && el.closest && el.closest('div')) el.closest('div').classList.add('field-invalid');
+  }
+  function clearErr(id){
+    const err = document.getElementById(id+'Error');
+    if(err) err.textContent = '';
+    const el = document.getElementById(id);
+    if(el && el.closest && el.closest('div')) el.closest('div').classList.remove('field-invalid');
+  }
+
+  function clearAllErrors(){
+    document.querySelectorAll('.error').forEach(e=>e.textContent='');
+    document.querySelectorAll('.field-invalid').forEach(n=>n.classList.remove('field-invalid'));
+  }
+
+  
+  requiredList.forEach(id => {
+    const el = document.getElementById(id);
+    if(el){
+      el.addEventListener('input', () => {
+        clearErr(id);
+      });
+    }
+  });
+
+  
+  const phoneInput = document.getElementById('phone');
+  if(phoneInput){
+    phoneInput.addEventListener('input', function(){
+      const v = this.value.replace(/\D/g,'').slice(0,10);
+      this.value = v;
+      if(v && !/^\d{9,10}$/.test(v)) showErr('phone','รูปแบบโทรศัพท์ไม่ถูกต้อง (9-10 หลัก)');
+      else clearErr('phone');
+    });
+  }
+
+ 
+  const studentIdInput = document.getElementById('studentId');
+  if(studentIdInput){
+    studentIdInput.addEventListener('input', function(){
+      if(this.value.length > 10) this.value = this.value.slice(0,10);
+      if(this.value && !/^\d+$/.test(this.value)) showErr('studentId','รหัสนักศึกษาต้องเป็นตัวเลข');
+      else clearErr('studentId');
+    });
+  }
+
+  
+  const prefixRadios = form.querySelectorAll('input[name="prefix"]');
+  prefixRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+      const err = document.getElementById('prefixError');
+      if(err) err.textContent = '';
+    });
+  });
+
+  const courseCheckboxes = form.querySelectorAll('input[name="course"]');
+  courseCheckboxes.forEach(chk => {
+    chk.addEventListener('change', () => {
+      const err = document.getElementById('courseError');
+      if(err) err.textContent = '';
+    });
+  });
+
+  const semesterCheckboxes = form.querySelectorAll('input[name="semester"]');
+  semesterCheckboxes.forEach(chk => {
+    chk.addEventListener('change', () => {
+      const err = document.getElementById('semesterError');
+      if(err) err.textContent = '';
+    });
+  });
+
+  // reset button
+  const resetBtn = document.getElementById('resetBtn');
+  if(resetBtn){
+    resetBtn.addEventListener('click', function(){
+      if(confirm('คุณแน่ใจว่าจะล้างข้อมูลทั้งหมด?')){
+        form.reset();
+        clearAllErrors();
+        window.scrollTo({top:0,behavior:'smooth'});
+      }
+    });
+  }
+
+  
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      clearAllErrors();
+
+      let valid = true;
+
+      
+      requiredList.forEach(id=>{
+        const el = document.getElementById(id);
+        if(el){
+          const val = (el.value||'').toString().trim();
+          if(!val){
+            showErr(id, 'กรุณากรอกข้อมูล');
+            valid = false;
+          }
+        }
+      });
+
+      
+      const pref = form.querySelectorAll('input[name="prefix"]');
+      if(![...pref].some(r=>r.checked)){
+        const prefErr = document.getElementById('prefixError');
+        if(prefErr) prefErr.textContent = 'กรุณาเลือกคำนำหน้าชื่อ';
+        valid = false;
+      }
+
+     
+      const courseChecked = form.querySelectorAll('input[name="course"]:checked').length;
+      if(courseChecked===0){
+        const courseErr = document.getElementById('courseError');
+        if(courseErr) courseErr.textContent = 'กรุณาเลือกหลักสูตรอย่างน้อย 1';
+        valid = false;
+      }
+
+     
+      const semChecked = form.querySelectorAll('input[name="semester"]:checked').length;
+      if(semChecked===0){
+        const semErr = document.getElementById('semesterError');
+        if(semErr) semErr.textContent = 'กรุณาเลือกภาคอย่างน้อย 1';
+        valid = false;
+      }
+
+     
+      const phone = phoneInput ? phoneInput.value.trim() : '';
+      if(phone && !/^\d{9,10}$/.test(phone)){
+        showErr('phone','รูปแบบโทรศัพท์ไม่ถูกต้อง (9-10 หลัก)');
+        valid = false;
+      }
+
+      
+      const sid = studentIdInput ? studentIdInput.value.trim() : '';
+      if(sid && !/^\d+$/.test(sid)){
+        showErr('studentId','รหัสนักศึกษาต้องเป็นตัวเลข');
+        valid = false;
+      }
+
+      if(!valid){
+       
+        const firstErr = document.querySelector('.error:not(:empty)');
+        if(firstErr){
+          const y = firstErr.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({top:y,behavior:'smooth'});
+        }
+        return;
+      }
+
+      
+      const formData = new FormData(form);
+      const data = {};
+      for(const [k,v] of formData.entries()){
+        if(data[k]){
+          if(Array.isArray(data[k])) data[k].push(v);
+          else data[k] = [data[k], v];
+        } else data[k] = v;
+      }
+
+      const summary = [
+        'ส่งคำร้องเรียบร้อย ',
+      ].join('\n');
+
+      alert(summary);
+      form.reset();
+    });
+  }
+})();
+</script>
+
+
+</body>
+</html>
